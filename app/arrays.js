@@ -102,12 +102,7 @@ arraysAnswers = {
    * @returns {Number[]} A new array, with elements from arr1 and arr2 in that order.
    */
   concat: function concat(arr1, arr2) {
-      var newArr = [];
-
-      arr1.map(element => newArr.push(element));
-      arr2.map(element => newArr.push(element));
-
-      return newArr;
+      return arr1.concat(arr2);
   },
 
   /**
@@ -178,7 +173,7 @@ arraysAnswers = {
         indexes.push(curIndex);
       }
       curIndex++; 
-    })
+    });
 
     return indexes;
   },
