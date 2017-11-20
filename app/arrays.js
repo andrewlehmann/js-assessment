@@ -42,7 +42,7 @@ arraysAnswers = {
    * @returns {Nunber[]} - the same array minus all instances of item
    */
   removeWithoutCopy: function removeWithoutCopy(arr, item) {
-    while(arr.filter(element => element == item).length > 0) {
+    while(arr.includes(item)) {
       arr.splice(arr.indexOf(item), 1);
     }
     return arr;
@@ -136,15 +136,7 @@ arraysAnswers = {
    * @returns {Number[]} An array of numbers that appear in arr more than once.
    */
   duplicates: function duplicates(arr) {
-    var duplicates = [];
-
-    arr.forEach(element => {
-      if (arr.indexOf(element) != arr.lastIndexOf(element)) {
-        if (duplicates.indexOf(element) == -1)
-          duplicates.push(element);
-      }
-    });
-    return duplicates;
+    return [...new Set(arr.filter(e => arr.indexOf(e) != arr.lastIndexOf(e)))];
   },
 
   /**
@@ -166,14 +158,12 @@ arraysAnswers = {
    */
   findAllOccurrences: function findAllOccurrences(arr, target) {
     var indexes = [];
-    var curIndex = 0;
 
-    arr.forEach(element => {
-      if(element == target) {
-        indexes.push(curIndex);
+    for(let i = 0; i < arr.length; i++) {
+      if (arr[i] == target) {
+        indexes.push(i);
       }
-      curIndex++; 
-    });
+    }
 
     return indexes;
   },
