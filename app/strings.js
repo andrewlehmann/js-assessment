@@ -10,24 +10,18 @@ stringsAnswers = {
    * @returns {String} A string with no more than amount number of repeated letters.
    */
   reduceString: function reduceString(str, maxAmount) {
-    const length = str.length;
     // start with 1 since there's always at least one of a letter
     let count = 1;
-    let returnString = '';
+    let returnString = str.charAt(0);
 
-    for (let index = 0; index < length; index++) {
-      if (str.charAt(index) == str.charAt(index + 1)) {
-        count++;
-      } else {
-        for (let consecAmtOfLetter = 0; consecAmtOfLetter < count; consecAmtOfLetter++) {
-          if (consecAmtOfLetter < maxAmount) {
-            returnString += str.charAt(index);
-          } else {
-            // move to next letter
-            break;
-          }
+    for(let i = 1; i < str.length; i++) {
+      if (str.charAt(i) == str.charAt(i-1)) {
+        if (++count <= maxAmount) {
+          returnString += str.charAt(i);
         }
+      } else {
         count = 1;
+        returnString += str.charAt(i);
       }
     }
 
