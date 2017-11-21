@@ -16,7 +16,7 @@ stringsAnswers = {
 
     for(let i = 1; i < str.length; i++) {
       if (str.charAt(i) == str.charAt(i-1)) {
-        if (++count <= maxAmount) {
+        if (count++ < maxAmount) {
           returnString += str.charAt(i);
         }
       } else {

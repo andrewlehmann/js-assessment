@@ -19,24 +19,16 @@ recursionAnswers = {
   listFiles: function listFiles(data, dirName) {
     let theFiles = [];
 
-    if (dirName != undefined) {
-      if (dirName == data.dirName) {
-        theFiles = listFiles(data);
-      } else {
-        data.subDirs.forEach((subDir) => {
-          theFiles = theFiles.concat(listFiles(subDir, dirName));
-        });
-      }
-      return theFiles;
-    } // end both params
-
-    theFiles = theFiles.concat(data.files);
-
-    data.subDirs.forEach((subDir) => {
-      theFiles = theFiles.concat(listFiles(subDir));
-    });
-
-    return theFiles;
+    if (dirName === data.dirName) {
+      return listFiles(data);
+    }
+    if (dirName === undefined) {
+      theFiles = theFiles.concat(data.files);
+    }
+    return theFiles.concat(
+      data.subDirs
+          .map(subDir => listFiles(subDir, dirName))
+          .reduce((acc, cur) => acc.concat(cur), []));
   },
 
   /**
