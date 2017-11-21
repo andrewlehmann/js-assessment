@@ -18,7 +18,7 @@ arraysAnswers = {
    * @returns {Number} The numerical sum of all items in arr.
    */
   sum: function sum(arr) {
-    return arr.reduce((element1, element2) => { return element1 + element2;});
+    return arr.reduce((accum, e) => accum + e);
 
   },
 
@@ -30,7 +30,7 @@ arraysAnswers = {
    * @returns {Number[]} A new array containing all numbers from arr except item.
    */
   remove: function remove(arr, item) {
-    return arr.filter(element => element != item);
+    return arr.filter(e => e != item);
 
   },
 
@@ -126,7 +126,7 @@ arraysAnswers = {
    * @returns {Number} The count of the number of times the number item appeared in arr.
    */
   count: function count(arr, item) {
-    return arr.filter(element => element == item).length;
+    return arr.filter(e => e == item).length;
   },
 
   /**
@@ -146,7 +146,7 @@ arraysAnswers = {
    * @returns {Number[]} A new array of numbers that contains the elements of arr squared.
    */
   square: function square(arr) {
-    return arr.map(element => element ** 2);
+    return arr.map(e => e ** 2);
   },
 
   /**
@@ -157,10 +157,10 @@ arraysAnswers = {
    * @returns {Number[]} A new array of numbers which represent the indices of target in arr.
    */
   findAllOccurrences: function findAllOccurrences(arr, target) {
-    var indexes = [];
-
+    let indexes = [];
+    
     for(let i = 0; i < arr.length; i++) {
-      if (arr[i] == target) {
+      if (arr[i] === target) {
         indexes.push(i);
       }
     }

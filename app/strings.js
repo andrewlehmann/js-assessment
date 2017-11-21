@@ -20,8 +20,8 @@ stringsAnswers = {
           returnString += str.charAt(i);
         }
       } else {
-        count = 1;
         returnString += str.charAt(i);
+        count = 1;
       }
     }
 
@@ -38,7 +38,7 @@ stringsAnswers = {
    */
   reverseString: function reverseString(str) {
     return str.split('')
-      .reverse()
-      .join('');
+              .reverse()
+              .join('');
   },
 };

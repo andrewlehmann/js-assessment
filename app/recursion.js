@@ -28,7 +28,7 @@ recursionAnswers = {
     return theFiles.concat(
       data.subDirs
           .map(subDir => listFiles(subDir, dirName))
-          .reduce((acc, cur) => acc.concat(cur), []));
+          .reduce((accum, dir) => accum.concat(dir), []));
   },
 
   /**
