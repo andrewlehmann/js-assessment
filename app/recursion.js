@@ -25,6 +25,7 @@ recursionAnswers = {
     if (dirName === undefined) {
       theFiles = theFiles.concat(data.files);
     }
+    
     return theFiles.concat(
       data.subDirs
           .map(subDir => listFiles(subDir, dirName))
@@ -41,8 +42,6 @@ recursionAnswers = {
    * @returns {Number} The nth fibonacci number
    */
   fibonacci: function fibonacci(n) {
-    if (n < 3) return 1;
-
-    return fibonacci(n - 1) + fibonacci(n - 2);
+    return (n < 3) ? 1 : fibonacci(n - 1) + fibonacci(n - 2);
   },
 };

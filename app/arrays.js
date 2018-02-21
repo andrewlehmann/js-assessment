@@ -55,8 +55,7 @@ arraysAnswers = {
    * @returns {Number[]} The array arr, with item appended.
    */
   append: function append(arr, item) {
-    arr.push(item);
-    return arr;
+    return arr.concat([item]);
   },
 
   /**
@@ -66,8 +65,7 @@ arraysAnswers = {
    * @returns {Number[]} The array arr, with the last element removed..
    */
   truncate: function truncate(arr) {
-      arr.pop();
-      return arr;
+      return arr.slice(0, arr.length - 1);
   },
 
   /**
@@ -78,8 +76,7 @@ arraysAnswers = {
    * @returns {Number[]} The array arr, with the first element item added
    */
   prepend: function prepend(arr, item) {
-    arr.unshift(item);
-    return arr;
+    return [item].concat(arr);
   },
 
 
@@ -90,8 +87,7 @@ arraysAnswers = {
    * @returns {Number[]} The array arr, with the first element item removed.
    */
   curtail: function curtail(arr) {
-    arr.shift();
-    return arr;
+    return arr.slice(1, arr.length);
   },
 
   /**
@@ -157,14 +153,8 @@ arraysAnswers = {
    * @returns {Number[]} A new array of numbers which represent the indices of target in arr.
    */
   findAllOccurrences: function findAllOccurrences(arr, target) {
-    let indexes = [];
-    
-    for(let i = 0; i < arr.length; i++) {
-      if (arr[i] === target) {
-        indexes.push(i);
-      }
-    }
-
-    return indexes;
+    return arr.map((value, index) => [index, value])
+      .filter(e => e[1] === target)
+      .map(e => e[0]);
   },
 };
