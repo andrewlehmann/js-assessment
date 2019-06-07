@@ -21,6 +21,7 @@ asyncAnswers = {
    * @returns {then: function} A promise like object containing a then property.
    */
   manipulateRemoteData: function manipulateRemoteData(url) {
-    return $.get(url).then(data => data.people.map(({ name }) => name).sort());
+    return $.get(url).then(({ people }) => 
+      people.map(({ name }) => name).sort());
   }
 };

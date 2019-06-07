@@ -151,8 +151,7 @@ arraysAnswers = {
    */
   findAllOccurrences: function findAllOccurrences(arr, target) {
     return arr
-      .map((value, index) => ({ index, value }))
-      .filter(({ value }) => value === target)
-      .map(({ index }) => index);
+      .map((value, index) => value === target ? index : -1)
+      .filter(e => e >= 0);
   }
 };
