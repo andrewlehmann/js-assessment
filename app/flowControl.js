@@ -14,12 +14,21 @@ flowControlAnswers = {
   fizzBuzz: function fizzBuzz(num) {
     if (typeof (num) !== 'number') return false;
 
-    let answer = '';
-    if (num % 3 == 0) answer += 'fizz';
-    if (num % 5 == 0) answer += 'buzz';
+    const isDivisibleBy3 = num % 3 === 0;
+    const isDivisibleBy5 = num % 5 === 0;
 
-    if (answer == '') answer = num;
+    if (isDivisibleBy3 && isDivisibleBy5) {
+      return 'fizzbuzz';
+    }
 
-    return answer;
+    if (isDivisibleBy3) {
+      return 'fizz';
+    }
+
+    if (isDivisibleBy5) {
+      return 'buzz';
+    }
+
+    return num;
   },
 };

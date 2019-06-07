@@ -23,25 +23,27 @@ recursionAnswers = {
       return listFiles(data);
     }
     if (dirName === undefined) {
-      theFiles = theFiles.concat(data.files);
+      theFiles = [...theFiles, ...data.files];
     }
-    
-    return theFiles.concat(
-      data.subDirs
-          .map(subDir => listFiles(subDir, dirName))
-          .reduce((accum, dir) => accum.concat(dir), []));
+
+    return [
+      ...theFiles,
+      ...data.subDirs
+        .map(subDir => listFiles(subDir, dirName))
+        .reduce((accum, dir) => [...accum, ...dir], [])
+    ];
   },
 
   /**
    * Determines the fibonacci number at position n.
    * https://en.wikipedia.org/wiki/Fibonacci_number
-   * 
+   *
    * The first few fibonacci numbers are: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
-   * 
+   *
    * @param {Number} n - the index of the fibonacci number desired
    * @returns {Number} The nth fibonacci number
    */
   fibonacci: function fibonacci(n) {
-    return (n < 3) ? 1 : fibonacci(n - 1) + fibonacci(n - 2);
-  },
+    return n < 3 ? 1 : fibonacci(n - 1) + fibonacci(n - 2);
+  }
 };
