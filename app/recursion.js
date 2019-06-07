@@ -24,8 +24,7 @@ recursionAnswers = {
     return [
       ...(dirName === undefined ? data.files : []),
       ...data.subDirs
-        .map(subDir => listFiles(subDir, dirName))
-        .reduce((accum, nextFiles) => [...accum, ...nextFiles], [])
+        .reduce((accum, nextSubdir) => [...accum, ...listFiles(nextSubdir, dirName)], [])
     ];
   },
 
