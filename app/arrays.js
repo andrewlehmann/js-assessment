@@ -18,7 +18,7 @@ arraysAnswers = {
    * @returns {Number} The numerical sum of all items in arr.
    */
   sum: function sum(arr) {
-    return arr.reduce((accum, e) => accum + e);
+    return arr.reduce((accum, next) => accum + next);
   },
 
   /**
@@ -63,7 +63,8 @@ arraysAnswers = {
    * @returns {Number[]} The array arr, with the last element removed..
    */
   truncate: function truncate(arr) {
-    return arr.slice(0, arr.length - 1);
+    arr.pop();
+    return arr;
   },
 
   /**
@@ -84,7 +85,8 @@ arraysAnswers = {
    * @returns {Number[]} The array arr, with the first element item removed.
    */
   curtail: function curtail(arr) {
-    return arr.slice(1, arr.length);
+    arr.shift();
+    return arr;
   },
 
   /**
