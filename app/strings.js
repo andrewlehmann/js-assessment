@@ -11,21 +11,8 @@ stringsAnswers = {
    */
   reduceString: function reduceString(str, maxAmount) {
     // start with 1 since there's always at least one of a letter
-    let count = 1;
-    let returnString = str.charAt(0);
-
-    for (let i = 1; i < str.length; i++) {
-      if (str.charAt(i) === str.charAt(i - 1)) {
-        if (count++ < maxAmount) {
-          returnString += str.charAt(i);
-        }
-      } else {
-        returnString += str.charAt(i);
-        count = 1;
-      }
-    }
-
-    return returnString;
+    const regex = new RegExp(`((.)\\2{${maxAmount - 1}})\\2+`, 'g');
+    return str.replace(regex, '$1');
   },
 
   /**
